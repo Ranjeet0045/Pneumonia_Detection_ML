@@ -1,7 +1,4 @@
 flask
-pillow==11.3.0
-numpy==2.0.2
-opendatasets==0.1.22
-tqdm==4.67.1
-matplotlib==3.10.0
 tensorflow
+numpy
+pillow

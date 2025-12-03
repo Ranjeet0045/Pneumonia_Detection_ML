@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Treatment & Recovery Timeline</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#eef4fb;
+  font-family:'Poppins',sans-serif;
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 40px;
+}
+
+h2{
+  text-align:center;
+  font-size:2.5rem;
+  background:linear-gradient(120deg,#2563eb,#38bdf8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.subtitle{
+  text-align:center;
+  color:#64748b;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:30px;
+  margin-top:50px;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
+}
+
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  border:1px solid #dbeafe;
+  box-shadow:0 10px 22px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+html, body{
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+
+.stage{
+  font-size:1.6rem;
+  font-weight:800;
+  color:#2563eb;
+}
+
+.time{
+  font-size:2.2rem;
+  margin:10px 0;
+  font-weight:700;
+}
+
+.desc{
+  color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<section class="wrap">
+<h2>Recovery & Treatment Timeline</h2>
+<p class="subtitle">Expected healing stages after early diagnosis</p>
+
+<div class="grid">
+
+<div class="card">
+  <div class="stage">Mild Infection</div>
+  <div class="time">2–3 Weeks</div>
+  <div class="desc">
+    Home care, fluids, rest, monitoring oxygen levels.
+  </div>
+</div>
+
+<div class="card">
+  <div class="stage">Moderate Hospital Care</div>
+  <div class="time">3–6 Weeks</div>
+  <div class="desc">
+    Antibiotics, occasional oxygen & respiratory support.
+  </div>
+</div>
+
+<div class="card">
+  <div class="stage">Severe ICU Recovery</div>
+  <div class="time">2–3 Months</div>
+  <div class="desc">
+    Ventilation, multi-drug therapy & pulmonary rehabilitation.
+  </div>
+</div>
+
+</div>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediScan AI | Pneumonia Insight</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+:root{
+  --bg:#eef4fb;
+  --card:#ffffff;
+  --text:#0f2644;
+  --muted:#64748b;
+  --border:#dbeafe;
+  --blue:#2563eb;
+  --shadow:0 10px 22px rgba(0,0,0,.08);
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+}
+
+#particles-js{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  padding:15px 40px;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--shadow);
+  z-index:10;
+}
+
+header h2{
+  margin:0;
+  background:linear-gradient(120deg,#2563eb,#38bdf8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* GRID */
+.grid{
+  max-width:1600px;
+  margin:auto;
+  padding:45px;
+  display:grid;
+  gap:30px;
+  grid-template-columns:1.15fr .85fr;
+}
+
+@media(max-width:950px){
+  .grid{ grid-template-columns:1fr; }
+}
+
+/* PANELS */
+.panel{
+  background:white;
+  padding:35px;
+  border-radius:22px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-4px); }
+}
+
+.info h1{
+  font-size:3rem;
+  background:linear-gradient(120deg,#2563eb,#38bdf8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* RIGHT COLUMN */
+.right-stack{
+  display:grid;
+  gap:16px;
+}
+
+/* CTA GROUP */
+.cta-group{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  align-items:center;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.scan-text{
+  font-size:2rem;
+  font-weight:600;
+  color:#454c57;
+}
+
+/* BUTTON */
+.launch-btn{
+  width:250px;
+  padding:17px 24px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#2563eb,#60a5fa);
+  color:white;
+  text-align:center;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 0 rgba(37,99,235,.6);
+  animation:pulse 2.2s infinite;
+  transition:.3s ease;
+}
+
+.launch-btn:hover{
+  transform:scale(1.05);
+}
+
+/* BUTTON PULSE */
+@keyframes pulse{
+  0% {
+    box-shadow:0 0 0 0 rgba(37,99,235,.6);
+  }
+  70% {
+    box-shadow:0 0 0 12px rgba(37,99,235,0);
+  }
+  100% {
+    box-shadow:0 0 0 0 rgba(37,99,235,0);
+  }
+}
+
+/* STATS */
+.stat{
+  display:flex;
+  gap:12px;
+  padding:18px;
+  border:1px solid var(--border);
+  background:white;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  transition:.3s ease;
+}
+
+.stat:hover{
+  transform:translateY(-6px) scale(1.01);
+}
+
+.num{
+  font-size:1.9rem;
+  color:#2563eb;
+  font-weight:700;
+}
+
+/* IFRAME */
+.charts-frame{
+  width:100%;
+  border:none;
+  overflow:hidden;
+  display:block;
+}
+
+/* REVEAL ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:.7s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* TRANSITIONS */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+<h2>MediScan AI</h2>
+</header>
+
+<section class="grid reveal">
+
+<div class="panel info">
+<h1>Pneumonia Insight</h1>
+<p><b>Who is at risk?</b> Children under 5 & seniors over 65.</p>
+<p><b>Two types:</b> Bacterial and Viral.</p>
+<p><b>Symptoms:</b> Fever, breathlessness, cough.</p>
+<p><b>Prevention:</b> Vaccines, hygiene, nutrition.</p>
+</div>
+
+<div class="right-stack">
+
+<div class="cta-group">
+  <div class="scan-text">
+    Click on below button to scan X-ray
+  </div>
+
+  <a href="/detect" class="launch-btn">
+    🚀 Launch AI Detector
+  </a>
+</div>
+
+<div class="stat reveal">
+  <span class="num counter" data-val="700000">0</span> Child deaths yearly
+</div>
+
+<div class="stat reveal">
+  <span class="num counter" data-val="1">0</span> Infectious killer
+</div>
+
+<div class="stat reveal">
+  <span class="num counter" data-val="2200000">0</span> Deaths annually
+</div>
+
+</div>
+
+</section>
+
+<!-- EXTERNAL MODULES -->
+<iframe src="/charts" class="charts-frame"></iframe>
+<iframe src="/timeline" class="charts-frame"></iframe>
+<iframe src="/faq" class="charts-frame"></iframe>
+
+<script>
+/* PARTICLES */
+particlesJS("particles-js",{
+ particles:{
+   number:{value:40},
+   color:{value:"#2563eb"},
+   size:{value:3},
+   opacity:{value:.4},
+   move:{speed:1}
+ }
+});
+
+/* AUTO IFRAME HEIGHT */
+document.querySelectorAll(".charts-frame").forEach(frame=>{
+  frame.onload = () => {
+    frame.style.height =
+      frame.contentWindow.document.body.scrollHeight + "px";
+  };
+});
+
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+/* COUNTERS */
+document.querySelectorAll(".counter").forEach(el=>{
+  let target = +el.dataset.val;
+  let curr = 0;
+  let step = target / 90;
+
+  let run = setInterval(()=>{
+     curr += step;
+     if(curr >= target){
+        curr = target;
+        clearInterval(run);
+     }
+     el.textContent = Math.floor(curr).toLocaleString();
+  },15);
+});
+</script>
+
+</body>
+</html>

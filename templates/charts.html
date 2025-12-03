@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pneumonia Health Analytics</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#eef4fb;
+}
+
+html, body{
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 40px;
+}
+
+h2{
+  text-align:center;
+  font-size:2.4rem;
+  background:linear-gradient(120deg,#2563eb,#38bdf8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  margin-top:40px;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  border:1px solid #dbeafe;
+  box-shadow:0 10px 22px rgba(0,0,0,.08);
+}
+</style>
+</head>
+
+<body>
+
+<section class="section">
+
+<h2>Pneumonia Health Analytics</h2>
+
+<div class="grid">
+
+<div class="card">
+<canvas id="ageChart"></canvas>
+</div>
+
+<div class="card">
+<canvas id="trendChart"></canvas>
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+/* AGE RISK BAR */
+new Chart(document.getElementById("ageChart"),{
+ type:"bar",
+ data:{
+  labels:["Under 5","6–18","19–40","41–65","65+"],
+  datasets:[{
+    label:"Mortality %",
+    data:[32,4,8,18,28]
+  }]
+ },
+ options:{
+  scales:{ y:{ beginAtZero:true } }
+ }
+});
+
+/* GLOBAL TREND LINE */
+new Chart(document.getElementById("trendChart"),{
+ type:"line",
+ data:{
+  labels:["2014","2016","2018","2020","2022","2024"],
+  datasets:[{
+    label:"Global Cases (Millions)",
+    data:[140,155,168,185,200,220],
+    tension:.35,
+    borderWidth:2,
+    fill:false
+  }]
+ }
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pneumonia FAQs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#eef4fb;
+  font-family:'Poppins',sans-serif;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 40px;
+}
+
+h2{
+  text-align:center;
+  font-size:2.5rem;
+  background:linear-gradient(120deg,#2563eb,#38bdf8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.accordion{
+  margin-top:40px;
+}
+
+.item{
+  background:white;
+  border-radius:16px;
+  border:1px solid #dbeafe;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+  margin-bottom:15px;
+  overflow:hidden;
+}
+
+.question{
+  padding:18px 24px;
+  cursor:pointer;
+  background:#f8fafc;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+  color:#0f2644;
+}
+
+.question span{
+  font-size:1.5rem;
+  color:#2563eb;
+  transition:.2s ease;
+}
+
+.answer{
+  max-height:0;
+  overflow:hidden;
+  background:white;
+  padding:0 24px;
+  color:#64748b;
+  transition:max-height .3s ease,padding .3s ease;
+}
+
+html, body{
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+
+.item.active .answer{
+  max-height:300px;
+  padding:18px 24px;
+}
+
+.item.active .question span{
+  transform:rotate(45deg);
+}
+</style>
+</head>
+
+<body>
+
+<section class="container">
+<h2>FAQs – Pneumonia & AI Diagnosis</h2>
+
+<div class="accordion">
+
+<div class="item">
+  <div class="question">Is pneumonia contagious? <span>+</span></div>
+  <div class="answer">
+    Yes. Viral and bacterial pneumonia can spread through respiratory droplets and close contact.
+  </div>
+</div>
+
+<div class="item">
+  <div class="question">Is AI diagnosis reliable? <span>+</span></div>
+  <div class="answer">
+    Our model is trained on multiple global datasets and validated against clinical annotations with over 95% recognition accuracy.
+  </div>
+</div>
+
+<div class="item">
+  <div class="question">Is chest X-ray safe? <span>+</span></div>
+  <div class="answer">
+    Yes — radiation exposure from a chest X-ray is extremely low and considered medically safe.
+  </div>
+</div>
+
+<div class="item">
+  <div class="question">Can pneumonia be cured fully? <span>+</span></div>
+  <div class="answer">
+    With early diagnosis and proper treatment most patients fully recover without long-term effects.
+  </div>
+</div>
+
+<div class="item">
+  <div class="question">Does COVID-19 cause pneumonia? <span>+</span></div>
+  <div class="answer">
+    Yes. COVID-19 frequently leads to viral pneumonia visible on chest X-ray imaging.
+  </div>
+</div>
+
+</div>
+</section>
+
+<script>
+
+document.querySelectorAll(".question").forEach(q=>{
+  q.addEventListener("click",()=>{
+    q.parentElement.classList.toggle("active");
+  });
+});
+
+</script>
+
+</body>
+</html>

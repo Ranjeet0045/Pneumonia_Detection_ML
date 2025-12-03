@@ -1,310 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediScan AI | Advanced Diagnostics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #26D0CE;
-            --secondary: #1A2980;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --text: #ffffff;
-            --danger: #FF6B6B;
-            --success: #4ADE80;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediScan AI | Multi-Class Diagnostics</title>
 
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            min-height: 100vh;
-            color: var(--text);
-            overflow-x: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* --- LAYOUT GRID --- */
-        .main-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px;
-            align-items: center;
-            min-height: 90vh;
-        }
+<style>
+:root{
+  --bg-color:#F8F9FB;
+  --card-bg:#FFFFFF;
+  --text-main:#1A202C;
+  --text-muted:#718096;
+  --primary:#3182CE;
+  --border:#E2E8F0;
 
-        /* --- GLASSMOPHISM CARD (Left Side) --- */
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 25px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
+  --danger:#E53E3E;
+  --warning:#DD6B20;
+  --success:#38A169;
+  --neutral:#718096;
 
-        /* --- INFO SECTION (Right Side) --- */
-        .info-section {
-            padding: 20px;
-            animation: fadeIn 1s ease-out;
-        }
+  --shadow:0 10px 22px rgba(0,0,0,.08);
+}
 
-        .info-title {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #26D0CE, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background-color:var(--bg-color);
+  min-height:100vh;
+  color:var(--text-main);
+}
 
-        .info-text {
-            font-size: 1em;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 20px;
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary);
-        }
+/* GRID */
+.main-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  max-width:1250px;
+  margin:0 auto;
+  padding:40px;
+  animation:fadeIn .75s ease forwards;
+}
 
-        .health-tips {
-            margin-top: 30px;
-        }
+@media(max-width:900px){
+  .main-container{grid-template-columns:1fr;}
+}
 
-        .tip-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        .tip-item:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); }
-        .tip-icon { font-size: 1.5em; margin-right: 15px; }
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(25px);}
+  to{opacity:1; transform:translateY(0);}
+}
 
-        /* --- UPLOAD STYLES --- */
-        .badge {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.7em;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.2);
-            display: inline-block; /* Ensures it doesn't overlap */
-            margin-bottom: 15px;
-        }
+/* CARD */
+.white-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:40px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  position:relative;
+  animation:float 6s ease-in-out infinite;
+}
 
-        .upload-area {
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            padding: 40px 20px;
-            margin-top: 30px;
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-        }
-        .upload-area:hover { background: rgba(255,255,255,0.05); border-color: var(--primary); }
-        
-        .upload-icon { font-size: 3em; display: block; margin-bottom: 10px; opacity: 0.8; }
-        
-        input[type="file"] {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; cursor: pointer;
-        }
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
 
-        /* --- RESULTS STYLES --- */
-        .preview-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 3px solid rgba(255,255,255,0.2);
-            margin: 20px auto;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+/* TEXT */
+.badge{
+  background:#EBF8FF;
+  color:var(--primary);
+  padding:7px 14px;
+  border-radius:20px;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:1px;
+}
 
-        .status { font-size: 2em; font-weight: 700; margin: 10px 0; text-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        .PNEUMONIA { color: var(--danger); }
-        .NORMAL { color: var(--success); }
+.back-link{
+  text-decoration:none;
+  font-size:.85rem;
+  color:var(--text-muted);
+  transition:.2s;
+}
+.back-link:hover{color:var(--primary);}
 
-        .progress-container {
-            width: 100%;
-            background: rgba(0,0,0,0.3);
-            height: 10px;
-            border-radius: 10px;
-            margin-top: 5px;
-            overflow: hidden;
-        }
-        .progress-bar { height: 100%; transition: width 1.5s ease; }
-        .bar-danger { background: linear-gradient(90deg, #FF6B6B, #FF8E53); }
-        .bar-success { background: linear-gradient(90deg, #4ADE80, #26D0CE); }
+h2{
+  margin-top:10px;
+}
 
-        .restart-btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 10px 30px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: 0.3s;
-        }
-        .restart-btn:hover { background: var(--primary); border-color: var(--primary); color: #000; }
+.info-title{
+  font-size:2.2rem;
+  margin-bottom:18px;
+}
 
-        .loader {
-            display: none;
-            border: 4px solid rgba(255,255,255,0.1);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            width: 40px; height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
+.info-text{
+  line-height:1.7;
+  background:#F7FAFC;
+  padding:18px 20px;
+  border-radius:14px;
+  margin-bottom:25px;
+  border-left:5px solid var(--primary);
+}
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* UPLOAD */
+.upload-area{
+  border:2px dashed #CBD5E0;
+  border-radius:18px;
+  padding:45px 20px;
+  margin-top:28px;
+  cursor:pointer;
+  background:#F7FAFC;
+  transition:.25s;
+}
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .main-container { grid-template-columns: 1fr; }
-        }
-    </style>
+.upload-area:hover{
+  background:#EDF2F7;
+  border-color:var(--primary);
+  transform:scale(1.02);
+}
+
+.upload-icon{
+  font-size:3rem;
+  margin-bottom:10px;
+  opacity:.6;
+}
+
+input[type="file"]{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:pointer;
+}
+
+/* LOADER */
+.loader{
+  display:none;
+  width:45px;
+  height:45px;
+  border:4px solid #EDF2F7;
+  border-top:4px solid var(--primary);
+  border-radius:50%;
+  margin:25px auto;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+/* RESULTS */
+.preview-img{
+  width:175px;
+  height:175px;
+  border-radius:18px;
+  object-fit:cover;
+  border:1px solid var(--border);
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  margin:25px auto;
+}
+
+.status{
+  font-size:2em;
+  font-weight:800;
+  margin:15px 0;
+  animation:pulse 1.3s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.06);}
+}
+
+.BACTERIAL{color:var(--danger);}
+.VIRAL{color:var(--warning);}
+.NORMAL{color:var(--success);}
+.UNCERTAIN{color:var(--neutral);}
+
+/* BUTTON */
+.restart-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 38px;
+  background:linear-gradient(135deg,#3182CE,#63B3ED);
+  color:white;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 8px 16px rgba(49,130,206,.25);
+  transition:.25s;
+}
+
+.restart-btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 12px 22px rgba(49,130,206,.35);
+}
+
+/* TIP LIST */
+.tip-item{
+  display:flex;
+  align-items:center;
+  margin-bottom:14px;
+  padding:15px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  gap:15px;
+  transition:.25s;
+}
+
+.tip-item:hover{
+  transform:translateX(6px);
+  box-shadow:0 4px 14px rgba(0,0,0,.05);
+}
+
+.tip-icon{
+  font-size:1.6rem;
+}
+
+</style>
 </head>
 <body>
 
-    <div class="main-container">
-        
-        <div class="glass-card">
-            <div>
-                <span class="badge">MediScan AI v2.0</span>
-                <h2 style="margin: 10px 0 5px;">Chest X-Ray Analysis</h2>
-            </div>
+<div class="main-container">
 
-            {% if not prediction %}
-            <p style="opacity: 0.7; font-size: 0.9em;">Upload a PA view chest X-ray for instant deep learning analysis.</p>
-            
-            <form id="uploadForm" method="post" enctype="multipart/form-data">
-                <div class="upload-area" id="dropZone">
-                    <span class="upload-icon">📤</span>
-                    <p><strong>Click to Upload</strong><br>or Drag & Drop File</p>
-                    <input type="file" name="file" accept="image/*" onchange="showLoader()">
-                </div>
-            </form>
-            <div class="loader" id="loader"></div>
+<div class="white-card">
 
-            {% else %}
-            <img src="{{ img_path }}" class="preview-img">
-            <p style="margin:0; opacity:0.7; font-size:0.8em; letter-spacing: 1px;">ANALYSIS RESULT</p>
-            <div class="status {{ prediction }}">{{ prediction }}</div>
-            
-            <div style="text-align: left; margin-top: 20px; padding: 0 10px;">
-                <div style="display:flex; justify-content:space-between; font-size:0.9em; font-weight:600;">
-                    <span>AI Confidence</span>
-                    <span>{{ confidence }}%</span>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar {% if prediction == 'PNEUMONIA' %}bar-danger{% else %}bar-success{% endif %}" 
-                         style="width: {{ confidence }}%;"></div>
-                </div>
-            </div>
+<div style="display:flex;justify-content:space-between;align-items:center;">
+  <span class="badge">MediScan AI</span>
+  <a href="/" class="back-link">← Info Page</a>
+</div>
 
-            <a href="/" class="restart-btn">Analyze New Scan</a>
-            {% endif %}
-        </div>
+<h2>Chest X-Ray Analysis</h2>
 
+{% if not prediction %}
+<p style="color:var(--text-muted);font-size:.85rem;">
+Upload an X-ray to detect Bacterial, Viral or Normal conditions.
+</p>
 
-        <div class="info-section">
-            
-            {% if not prediction %}
-            <h1 class="info-title">Understanding Pneumonia</h1>
-            <div class="info-text">
-                Pneumonia is an infection that inflames the air sacs in one or both lungs. The air sacs may fill with fluid or pus, causing cough with phlegm, fever, chills, and difficulty breathing.
-            </div>
-            
-            <h3 style="margin-top: 30px;">Why Early Detection Matters?</h3>
-            <div class="health-tips">
-                <div class="tip-item">
-                    <span class="tip-icon">⏱️</span>
-                    <div><strong>Faster Recovery:</strong> Early diagnosis leads to prompt treatment, reducing the severity of symptoms.</div>
-                </div>
-                <div class="tip-item">
-                    <span class="tip-icon">🛡️</span>
-                    <div><strong>Prevent Complications:</strong> Helps avoid severe lung damage, especially in children and the elderly.</div>
-                </div>
-                <div class="tip-item">
-                    <span class="tip-icon">📉</span>
-                    <div><strong>Stop the Spread:</strong> Identifying viral pneumonia early helps prevent transmission to others.</div>
-                </div>
-            </div>
+<form id="uploadForm" method="post" enctype="multipart/form-data">
+  <div class="upload-area" id="dropZone">
+    <span class="upload-icon">📤</span>
+    <p>
+      <strong>Click to Upload</strong><br>
+      <span style="font-size:.8em;color:var(--text-muted);">
+        or Drag & Drop File
+      </span>
+    </p>
+    <input type="file" name="file" accept="image/*" onchange="showLoader()">
+  </div>
+</form>
 
-            {% elif prediction == 'PNEUMONIA' %}
-            <h1 class="info-title" style="color: var(--danger)">⚠️ Action Required</h1>
-            <div class="info-text" style="border-color: var(--danger);">
-                Our AI has detected signs consistent with Pneumonia. Please consult a medical professional immediately for a confirmed diagnosis and treatment plan.
-            </div>
+<div class="loader" id="loader"></div>
 
-            <h3 style="margin-top: 30px;">Recommended Next Steps</h3>
-            <div class="health-tips">
-                <div class="tip-item">
-                    <span class="tip-icon">👨‍⚕️</span>
-                    <div><strong>Visit a Doctor:</strong> Do not self-medicate. A doctor needs to determine if it is viral or bacterial.</div>
-                </div>
-                <div class="tip-item">
-                    <span class="tip-icon">💧</span>
-                    <div><strong>Stay Hydrated:</strong> Drink plenty of fluids to help loosen mucous in your lungs.</div>
-                </div>
-                <div class="tip-item">
-                    <span class="tip-icon">🛏️</span>
-                    <div><strong>Rest is Crucial:</strong> Your body needs energy to fight the infection. Avoid strenuous activity.</div>
-                </div>
-            </div>
+{% else %}
+<img src="{{ img_path }}" class="preview-img">
 
-            {% else %}
-            <h1 class="info-title" style="color: var(--success)">✅ Healthy Lungs</h1>
-            <div class="info-text" style="border-color: var(--success);">
-                Great news! Our AI did not detect any signs of pneumonia. Your lungs appear clear based on this scan.
-            </div>
+<p style="margin:0;letter-spacing:1px;text-transform:uppercase;
+font-size:.75rem;color:var(--text-muted);">Diagnosis Result</p>
 
-            <h3 style="margin-top: 30px;">Tips for Healthy Lungs</h3>
-            <div class="health-tips">
-                <div class="tip-item">
-                    <span class="tip-icon">🚭</span>
-                    <div><strong>Don't Smoke:</strong> Smoking damages lung tissue and makes you more vulnerable to infections.</div>
-                </div>
-                <div class="tip-item">
-                    <span class="tip-icon">🏃</span>
-                    <div><strong>Exercise Regularly:</strong> Cardio activities help strengthen your lungs and improve capacity.</div>
-                </div>
-                <div class="tip-item">
-                    <span class="tip-icon">🧼</span>
-                    <div><strong>Good Hygiene:</strong> Wash hands frequently to prevent respiratory infections like the flu.</div>
-                </div>
-            </div>
-            {% endif %}
+<div class="status {{ prediction }}">
+{% if prediction == 'BACTERIAL' %}
+BACTERIAL PNEUMONIA
+{% elif prediction == 'VIRAL' %}
+VIRAL PNEUMONIA
+{% elif prediction == 'UNCERTAIN' %}
+INCONCLUSIVE
+{% else %}
+NORMAL (HEALTHY)
+{% endif %}
+</div>
 
-        </div>
+<a href="/detect" class="restart-btn">
+Analyze New Scan
+</a>
+{% endif %}
+</div>
+
+<div class="info-section">
+
+{% if not prediction %}
+<h1 class="info-title">Advanced Diagnosis</h1>
+
+<div class="info-text">
+Not all pneumonia is the same.
+Identifying if it is <strong>Viral</strong>
+or <strong>Bacterial</strong> ensures correct treatment.
+</div>
+
+<h3>How it works?</h3>
+
+<div class="health-tips">
+  <div class="tip-item">
+    <span class="tip-icon">🦠</span>
+    <div>
+      <strong>Bacterial:</strong>
+      Dense “lobar” consolidation in lung sections.
     </div>
+  </div>
 
-    <script>
-        function showLoader() {
-            document.getElementById('dropZone').style.display = 'none';
-            document.getElementById('loader').style.display = 'block';
-            document.getElementById('uploadForm').submit();
-        }
-    </script>
+  <div class="tip-item">
+    <span class="tip-icon">🧬</span>
+    <div>
+      <strong>Viral:</strong>
+      Diffuse “interstitial” streaky lung patterns.
+    </div>
+  </div>
+</div>
+
+{% elif prediction == 'BACTERIAL' %}
+<h1 class="info-title" style="color:var(--danger)">
+⚠️ Bacterial Detected
+</h1>
+
+<div class="info-text" style="border-color:var(--danger);background:#FFF5F5;">
+<div class="tip-item">💊 <strong>Start antibiotics</strong> exactly as prescribed by a doctor.</div>
+<div class="tip-item">🌡️ <strong>Monitor fever & breathing</strong> symptoms daily.</div>
+<div class="tip-item">💧 <strong>Stay hydrated</strong> to help loosen lung mucus.</div>
+<div class="tip-item">🛏️ <strong>Get full rest</strong> to support immune recovery.</div>
+<div class="tip-item">🏥 <strong>Seek emergency care</strong> if breathing worsens or lips turn blue.</div>
+
+{% elif prediction == 'VIRAL' %}
+<h1 class="info-title" style="color:var(--warning)">
+⚠️ Viral Detected
+</h1>
+
+<div class="info-text" style="border-color:var(--warning);background:#FFFAF0;">
+<div class="tip-item">🛏️ <strong>Get full rest</strong> to help the immune system fight the infection.</div>
+<div class="tip-item">💧 <strong>Drink plenty of fluids</strong> to prevent dehydration.</div>
+<div class="tip-item">🚫 <strong>Avoid antibiotics</strong> unless prescribed for another condition.</div>
+<div class="tip-item">💊 <strong>Use symptom relief</strong> medication for fever or pain.</div>
+<div class="tip-item">😷 <strong>Stay isolated</strong> to prevent spreading the virus to others.</div>
+
+{% elif prediction == 'UNCERTAIN' %}
+<h1 class="info-title" style="color:var(--neutral)">
+⚠️ Result Inconclusive
+</h1>
+
+<div class="info-text" style="border-color:var(--neutral);">
+Image clarity insufficient.
+Retake scan or consult specialist.
+</div>
+
+{% else %}
+<h1 class="info-title" style="color:var(--success)">
+✅ Lungs Clear
+</h1>
+
+<div class="info-text" style="border-color:var(--success);background:#F0FFF4;">
+<div class="tip-item">🧼 <strong>Maintain hygiene</strong> – hand-washing reduces infection risk.</div>
+<div class="tip-item">🚭 <strong>Avoid smoke exposure</strong> – protects lung tissue.</div>
+<div class="tip-item">🏃 <strong>Regular exercise</strong> – improves breathing capacity.</div>
+</div>
+
+{% endif %}
+
+</div>
+</div>
+
+<script>
+function showLoader(){
+ document.getElementById("dropZone").style.display="none";
+ document.getElementById("loader").style.display="block";
+ document.getElementById("uploadForm").submit();
+}
+</script>
+
 </body>
 </html>
