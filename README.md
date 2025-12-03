@@ -170,24 +170,24 @@ Covering both pediatric and adult chest X-ray images.
 ## 📸 Screenshots
 
 ### Landing Page
-![Landing Page](./screenshots/landing.png)
+![Landing Page](https://raw.githubusercontent.com/Ranjeet0045/Pneumonia_Detection_ML/master/screenshots/landing.png)
 
 ---
 
 ### Upload X-Ray
-![Upload Screen](./screenshots/upload.png)
+![Upload Screen](https://raw.githubusercontent.com/Ranjeet0045/Pneumonia_Detection_ML/master/screenshots/upload.png)
 
 ---
 
 ### Bacterial Detection Result
-![Bacterial Result](./screenshots/bacterial.png)
+![Bacterial Result](https://raw.githubusercontent.com/Ranjeet0045/Pneumonia_Detection_ML/master/screenshots/bacterial.png)
 
 ---
 
 ### Viral Detection Result
-![Viral Result](./screenshots/viral.png)
+![Viral Result](https://raw.githubusercontent.com/Ranjeet0045/Pneumonia_Detection_ML/master/screenshots/viral.png)
 
 ---
 
 ### Normal Detection Result
-![Normal Result](./screenshots/normal.png)
+![Normal Result](https://raw.githubusercontent.com/Ranjeet0045/Pneumonia_Detection_ML/master/screenshots/normal.png)
