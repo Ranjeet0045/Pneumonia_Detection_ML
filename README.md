@@ -64,7 +64,7 @@ It’s built as a clean, educational mini-platform with:
 🚀 Getting Started (Run Locally)
 
 1️⃣ Clone the repository
-git clone https://github.com/<RANJEET0045>/<Pneumonia_Detection_ML>.git
+git clone https://github.com/RANJEET0045/<Pneumonia_Detection_ML>.git
 cd <Pneumonia_Detection_ML>
 
 2️⃣ (Recommended) Create a virtual environment
