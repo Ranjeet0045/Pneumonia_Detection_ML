@@ -64,8 +64,8 @@ It’s built as a clean, educational mini-platform with:
 🚀 Getting Started (Run Locally)
 
 1️⃣ Clone the repository
-git clone https://github.com/RANJEET0045/<Pneumonia_Detection_ML>.git
-cd <Pneumonia_Detection_ML>
+git clone https://github.com/RANJEET0045/Pneumonia_Detection_ML.git
+cd Pneumonia_Detection_ML
 
 2️⃣ (Recommended) Create a virtual environment
 python -m venv env
@@ -107,8 +107,8 @@ Model runs prediction via predict_logic(...)
 Confidence score is calculated
 
 Result view:
+
 Shows predicted class (BACTERIAL / VIRAL / NORMAL / UNCERTAIN)
-Shows confidence percentage
 Shows X-ray preview
 Displays tips tailored to the result:
 Bacterial → antibiotics, monitoring, urgent care triggers (5 tips)
