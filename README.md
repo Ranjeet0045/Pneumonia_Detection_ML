@@ -170,28 +170,24 @@ Covering both pediatric and adult chest X-ray images.
 ## 📸 Screenshots
 
 ### Landing Page
-![Landing Page](./screenshots/landing.png)
+![Landing Page](screenshots/landing.png)
 
 ---
 
 ### Upload X-Ray
-![Upload Screen](./screenshots/upload.png)
+![Upload Screen](screenshots/upload.png)
 
 ---
 
 ### Bacterial Detection Result
-![Bacterial Result](./screenshots/bacterial.png)
+![Bacterial Result](screenshots/bacterial.png)
 
 ---
 
 ### Viral Detection Result
-![Viral Result](./screenshots/viral.png)
+![Viral Result](screenshots/viral.png)
 
 ---
 
 ### Normal Detection Result
-![Normal Result](./screenshots/normal.png)
-
-
-### Normal Detection Result
-<img src="screenshots/normal.png" width="700">
+![Normal Result](screenshots/normal.png)
