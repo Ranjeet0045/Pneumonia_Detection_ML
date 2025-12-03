@@ -130,24 +130,44 @@ BACTERIAL
 NORMAL
 VIRAL
 
-📂 Datasets Used:
+## 📂 Datasets Used
+
 This project utilizes a custom hybrid dataset created by combining two major open-source repositories to ensure robust detection across different age groups (Pediatric & Adult) and pneumonia types.
 
-Chest X-Ray Images (Pneumonia) - Paul Timothy Mooney
-Focus: Pediatric patients (1-5 years old).
-Link: https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+---
 
-COVID-19 Radiography Database - Tawsifur Rahman
-Focus: Adult patients & Viral Pneumonia cases.
-Link: https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database
+### 1️⃣ Chest X-Ray Images (Pneumonia) – Paul Timothy Mooney  
+Focus: Pediatric patients (1–5 years old).  
+🔗 Dataset Link:  
+[https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
-Why we combined them:
-Mooney's Dataset is excellent for Bacterial Pneumonia but lacks Adult cases.
-Rahman's Dataset provides high-quality Adult Normal and Viral Pneumonia cases.
+---
 
-Result: A balanced, multi-class dataset (Normal vs. Bacterial vs. Viral) capable of diagnosing patients of varying ages.
+### 2️⃣ COVID-19 Radiography Database – Tawsifur Rahman  
+Focus: Adult patients & viral pneumonia cases.  
+🔗 Dataset Link:  
+[https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database](https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database)
 
-## 📸 Screenshots 
+---
+
+### ✅ Why we combined them
+
+- Mooney dataset is excellent for **bacterial pneumonia detection** but contains mainly pediatric cases.
+- Rahman dataset provides high-quality **adult normal and viral pneumonia images**.
+
+### 🎯 Result
+
+A balanced **3-class dataset**:
+
+**Normal vs Bacterial vs Viral**
+
+spanning **both children and adult X-rays**, improving generalization accuracy.
+
+
+---
+
+## 📸 Screenshots
+
 ### Landing Page
 ![Landing Page](screenshots/landing.png)
 
