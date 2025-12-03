@@ -47,7 +47,6 @@ It’s built as a clean, educational mini-platform with:
 
 ## 📁 Project Structure
 
-```bash
 .
 ├── app.py                    # Flask app + routes + prediction logic
 ├── requirements.txt          # Python dependencies
