@@ -136,32 +136,33 @@ This project utilizes a custom hybrid dataset created by combining two major ope
 
 ---
 
-### 1️⃣ Chest X-Ray Images (Pneumonia) – Paul Timothy Mooney  
-Focus: Pediatric patients (1–5 years old).  
-🔗 Dataset Link:  
-[https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
+### Chest X-Ray Images (Pneumonia) – Paul Timothy Mooney  
+**Focus:** Pediatric patients (1–5 years old)
+
+🔗 **Dataset URL:**  
+👉 https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
 ---
 
-### 2️⃣ COVID-19 Radiography Database – Tawsifur Rahman  
-Focus: Adult patients & viral pneumonia cases.  
-🔗 Dataset Link:  
-[https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database](https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database)
+### COVID-19 Radiography Database – Tawsifur Rahman  
+**Focus:** Adult patients & Viral Pneumonia cases
+
+🔗 **Dataset URL:**  
+👉 https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database
 
 ---
 
-### ✅ Why we combined them
+### ✅ Why we combined them:
 
-- Mooney dataset is excellent for **bacterial pneumonia detection** but contains mainly pediatric cases.
-- Rahman dataset provides high-quality **adult normal and viral pneumonia images**.
+- Mooney dataset provides reliable **Bacterial pneumonia data** but lacks adult cases.
+- Rahman dataset contains strong **Adult Normal & Viral pneumonia samples**.
 
-### 🎯 Result
+🎯 **Result:**
+A balanced **multi-class dataset**:
 
-A balanced **3-class dataset**:
+**Normal – Bacterial – Viral**
 
-**Normal vs Bacterial vs Viral**
-
-spanning **both children and adult X-rays**, improving generalization accuracy.
+Covering both pediatric and adult chest X-ray images.
 
 
 ---
@@ -169,24 +170,24 @@ spanning **both children and adult X-rays**, improving generalization accuracy.
 ## 📸 Screenshots
 
 ### Landing Page
-![Landing Page](screenshots/landing.png)
+<img src="screenshots/landing.png" width="700">
 
 ---
 
 ### Upload X-Ray
-![Upload Screen](screenshots/upload.png)
+<img src="screenshots/upload.png" width="700">
 
 ---
 
 ### Bacterial Detection Result
-![Bacterial Result](screenshots/bacterial.png)
+<img src="screenshots/bacterial.png" width="700">
 
 ---
 
 ### Viral Detection Result
-![Viral Result](screenshots/viral.png)
+<img src="screenshots/viral.png" width="700">
 
 ---
 
 ### Normal Detection Result
-![Normal Result](screenshots/normal.png)
+<img src="screenshots/normal.png" width="700">
