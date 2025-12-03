@@ -1,7 +1,7 @@
 __pycache__/
 *.pyc
 *.h5
-.env
+env/
 
 static/uploads/*
 training_code.ipynb
