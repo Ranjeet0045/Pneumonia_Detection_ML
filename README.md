@@ -44,7 +44,7 @@ It’s built as a clean, educational mini-platform with:
 - **Environment:** Git, virtualenv (recommended)
 
 ---
-
+```
 ## 📁 Project Structure
 
 .
@@ -60,6 +60,7 @@ It’s built as a clean, educational mini-platform with:
 └── static/
     └── uploads/              # Uploaded X-ray images (not committed to Git)
 
+```
 🚀 Getting Started (Run Locally)
 
 1️⃣ Clone the repository
@@ -69,7 +70,7 @@ cd <Pneumonia_Detection_ML>
 2️⃣ (Recommended) Create a virtual environment
 python -m venv env
 env\Scripts\activate      # Windows
-# source env/bin/activate # Mac / Linux
+source env/bin/activate   # Mac / Linux
 
 3️⃣ Install dependencies
 pip install -r requirements.txt
