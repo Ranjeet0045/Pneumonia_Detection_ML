@@ -1,9 +1,21 @@
 import os
 import numpy as np
+import gdown
 from flask import Flask, request, render_template
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
+
+MODEL_PATH = "pneumonia_mobilenet_best.h5"
+FILE_ID = "1htKwny2808lQrrjfG_vI5PV04Kv1Pqqz?usp=sharing"
+
+if not os.path.exists(MODEL_PATH):
+    print("⏳ Downloading model from Google Drive...")
+    gdown.download(f"https://drive.google.com/uc?id={FILE_ID}", MODEL_PATH, quiet=False)
+
+print("⏳ Loading MediScan AI Model...")
+model = load_model(MODEL_PATH)
+print("✅ Model loaded successfully!")
 
 # =============================
 # FLASK SETUP

@@ -2,3 +2,4 @@ flask
 tensorflow==2.13.0
 numpy
 pillow
+gdown
