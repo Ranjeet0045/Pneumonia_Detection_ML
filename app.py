@@ -10,15 +10,15 @@ from werkzeug.utils import secure_filename
 # MODEL DOWNLOAD
 # =============================
 MODEL_PATH = "pneumonia_mobilenet_best.h5"
-FILE_ID = "1mgTHrOYig_syGE6kOtTc5PMC2x-MHqjZ"  # ✅ Fixed: ID only, no extra text
+FILE_ID = "1mgTHrOYig_syGE6kOtTc5PMC2x-MHqjZ"
 
 if not os.path.exists(MODEL_PATH):
     print("⏳ Downloading model from Google Drive...")
     gdown.download(
-        id=FILE_ID,        # ✅ Fixed: pass id directly
+        id=FILE_ID,
         output=MODEL_PATH,
         quiet=False,
-        fuzzy=True         # ✅ Fixed: handles permission issues
+        fuzzy=True
     )
 
 # =============================
@@ -31,10 +31,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # =============================
-# MODEL LOADING (only once ✅)
+# MODEL LOADING
 # =============================
 print("⏳ Loading MediScan AI Model...")
-model = load_model(MODEL_PATH)
+model = load_model(MODEL_PATH, compile=False)  # ✅ compile=False fixes deserialization errors
 print("✅ Model Loaded Successfully!")
 
 # CLASS LABELS
@@ -60,7 +60,6 @@ def predict_logic(img_path):
 # =============================
 # ROUTES
 # =============================
-
 @app.route("/")
 def home():
     return render_template("first.html")
@@ -106,5 +105,5 @@ def faq():
 # RUN SERVER
 # =============================
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # ✅ Fixed: Render sets PORT automatically
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host="0.0.0.0", port=port)
