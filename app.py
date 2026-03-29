@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
 
 MODEL_PATH = "pneumonia_mobilenet_best.h5"
-FILE_ID = "1htKwny2808lQrrjfG_vI5PV04Kv1Pqqz?usp=sharing"
+FILE_ID = "1cGw5U61gTEn9wdipgLvBKgH2-UyzsYW6/view?usp=sharing"
 
 if not os.path.exists(MODEL_PATH):
     print("⏳ Downloading model from Google Drive...")
