@@ -6,32 +6,35 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 from werkzeug.utils import secure_filename
 
+# =============================
+# MODEL DOWNLOAD
+# =============================
 MODEL_PATH = "pneumonia_mobilenet_best.h5"
-FILE_ID = "1cGw5U61gTEn9wdipgLvBKgH2-UyzsYW6/view?usp=sharing"
+FILE_ID = "1mgTHrOYig_syGE6kOtTc5PMC2x-MHqjZ"  # ✅ Fixed: ID only, no extra text
 
 if not os.path.exists(MODEL_PATH):
     print("⏳ Downloading model from Google Drive...")
-    gdown.download(f"https://drive.google.com/uc?id={FILE_ID}", MODEL_PATH, quiet=False)
-
-print("⏳ Loading MediScan AI Model...")
-model = load_model(MODEL_PATH)
-print("✅ Model loaded successfully!")
+    gdown.download(
+        id=FILE_ID,        # ✅ Fixed: pass id directly
+        output=MODEL_PATH,
+        quiet=False,
+        fuzzy=True         # ✅ Fixed: handles permission issues
+    )
 
 # =============================
 # FLASK SETUP
 # =============================
 app = Flask(__name__)
 
-# Upload Folder
 UPLOAD_FOLDER = 'static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # =============================
-# MODEL LOADING
+# MODEL LOADING (only once ✅)
 # =============================
 print("⏳ Loading MediScan AI Model...")
-model = load_model('pneumonia_mobilenet_best.h5')
+model = load_model(MODEL_PATH)
 print("✅ Model Loaded Successfully!")
 
 # CLASS LABELS
@@ -41,7 +44,7 @@ CLASS_NAMES = ['BACTERIAL', 'NORMAL', 'VIRAL']
 # PREDICTION LOGIC
 # =============================
 def predict_logic(img_path):
-    img = image.load_img(img_path, target_size=(224,224))
+    img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = x / 255.0
@@ -50,7 +53,7 @@ def predict_logic(img_path):
     predicted_index = np.argmax(preds)
 
     result = CLASS_NAMES[predicted_index]
-    confidence = round(float(preds[predicted_index])*100,2)
+    confidence = round(float(preds[predicted_index]) * 100, 2)
 
     return result, confidence
 
@@ -58,22 +61,17 @@ def predict_logic(img_path):
 # ROUTES
 # =============================
 
-# Home Page
 @app.route("/")
 def home():
     return render_template("first.html")
 
-# Xray Detection Page + Upload
-@app.route("/detect", methods=["GET","POST"])
+@app.route("/detect", methods=["GET", "POST"])
 def detect():
-
-    # Page first load
-    if request.method=="GET":
+    if request.method == "GET":
         return render_template("index.html", prediction=None)
 
-    # When image uploaded
     file = request.files.get("file")
-    if not file or file.filename=="":
+    if not file or file.filename == "":
         return render_template("index.html",
             prediction="UNCERTAIN",
             confidence=0
@@ -81,7 +79,6 @@ def detect():
 
     filename = secure_filename(file.filename)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
     file.save(filepath)
 
     prediction, confidence = predict_logic(filepath)
@@ -93,8 +90,6 @@ def detect():
         img_path=filepath
     )
 
-
-# INFORMATION MODULE PAGES
 @app.route("/charts")
 def charts():
     return render_template("charts.html")
@@ -107,9 +102,9 @@ def timeline():
 def faq():
     return render_template("faq.html")
 
-
 # =============================
 # RUN SERVER
 # =============================
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))  # ✅ Fixed: Render sets PORT automatically
+    app.run(debug=False, host="0.0.0.0", port=port)
